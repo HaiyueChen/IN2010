@@ -4,6 +4,6 @@ class BstNode{
     private String data;
 
     public BstNode(String s){
-        this.
+        this.data = s;
     }
 }
