@@ -52,5 +52,13 @@ class Bst{
 
     }
 
+    public BstNode insert(String s){
+        return this.root.insert(s);
+    }
+
+    public BstNode delete(String s){
+        return this.root.
+    }
+
 
 }

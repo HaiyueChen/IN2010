@@ -48,6 +48,27 @@ class BstNode{
         return null;
     }
 
+    public BstNode insert(String s){
+        if(s.compareTo(this.data) < 0){
+            if(this.left == null){
+                this.left = new BstNode(s);
+                return this.left;
+            }
+            else{
+                return this.left.insert(s);
+            }
+        }
+        else{
+            if(this.right == null){
+                this.right = new BstNode(s);
+                return this.right;
+            }
+            else{
+                return this.right.insert(s);
+            }
+        }
+    }
+
 
     /*
     public void printNode(String padding){
