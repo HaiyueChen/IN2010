@@ -33,6 +33,22 @@ class BstNode{
         }
     }
 
+    public BstNode search(String s){
+        if(s.equals(this.data)){
+            return this;
+        }
+        else if(this.left != null && s.compareTo(this.data) < 0){
+            //System.out.println("left");
+            return left.search(s); 
+        }
+        else if(this.right != null && s.compareTo(this.data) > 0){
+            //System.out.println("right");
+            return right.search(s);
+        }
+        return null;
+    }
+
+
     /*
     public void printNode(String padding){
         System.out.print(padding + this.data + padding);
