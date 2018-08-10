@@ -1,7 +1,7 @@
 class BstNode{
 
     public BstNode parent, left, right;
-    private String data;
+    public String data;
 
     public BstNode(String s){
         this.data = s;
@@ -33,6 +33,7 @@ class BstNode{
         }
     }
 
+    /*
     public void printNode(String padding){
         System.out.print(padding + this.data + padding);
         
@@ -48,7 +49,7 @@ class BstNode{
         System.out.println();
 
     }
-
+*/
 
 
 }
