@@ -8,10 +8,11 @@ class BstNode{
     }
 
     public void addNode(String s){
+        
         if(s.compareTo(this.data) < 0){
-
             if(this.left == null){
                 this.left = new BstNode(s);
+                this.left.parent = this;
             
             }
             else{
@@ -23,6 +24,7 @@ class BstNode{
 
             if(this.right == null){
                 this.right = new BstNode(s);
+                this.right.parent = this;
 
             }
             else{
@@ -47,6 +49,45 @@ class BstNode{
         }
         return null;
     }
+
+    public int numb_children(BstNode node){
+        int num = 0;
+        if(node.left != null){
+            num ++;
+        }
+
+        if(node.right != null){
+            num ++;
+        }
+        return num;
+
+    }
+
+    public void delete(){
+        if(this.left == null && this.right == null){
+            if(this.parrent)
+        
+        }
+        else if(this.left != null ^ this.right != null){
+            if(this.left != null){
+                this.parent
+            }
+        }
+
+    }
+
+    public String find_branch(BstNode node){
+        if(this.left == node){
+            return "left";
+        }
+        else if(this.right == node){
+            return "right";
+        }
+        else{
+            return "error";
+        }
+    }
+
 
     public BstNode insert(String s){
         if(s.compareTo(this.data) < 0){

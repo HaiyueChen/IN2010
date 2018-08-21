@@ -57,7 +57,14 @@ class Bst{
     }
 
     public BstNode delete(String s){
-        return this.root.
+        if(s.equals(root.data) && root.)
+        BstNode to_be_deleted = this.search(s);
+
+        if(to_be_deleted != null){
+            to_be_deleted.delete();
+        }
+
+        return to_be_deleted;
     }
 
 
