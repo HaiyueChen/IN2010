@@ -50,13 +50,13 @@ class BstNode{
         return null;
     }
 
-    public int numb_children(BstNode node){
+    public int numb_children(){
         int num = 0;
-        if(node.left != null){
+        if(this.left != null){
             num ++;
         }
 
-        if(node.right != null){
+        if(this.right != null){
             num ++;
         }
         return num;
@@ -64,16 +64,39 @@ class BstNode{
     }
 
     public void delete(){
-        if(this.left == null && this.right == null){
-            if(this.parrent)
+        if(this.numb_children() < 1){
+
+            if(this.parent.find_branch(this).equals("left")){
+                this.parent.left = null;
+            }
+            else if(this.parent.find_branch(this).equals("right")){
+                this.parent.right = null;
+            }
+            else{
+                System.out.println("sum ting long 1");
+            }
         
         }
         else if(this.left != null ^ this.right != null){
             if(this.left != null){
-                this.parent
-            }
-        }
+                
+                if (this.parent.find_branch(this).equals("left")) {
+                    this.parent.left = this.left;
 
+                }
+                else if (this.parent.find_branch(this).equals("right")) {
+                    this.parent.right = null;
+                } else {
+                    System.out.println("sum ting long 1");
+                }
+            
+            }
+            else{
+
+
+            }
+
+        }
     }
 
     public String find_branch(BstNode node){

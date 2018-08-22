@@ -56,16 +56,21 @@ class Bst{
         return this.root.insert(s);
     }
 
+    /*
     public BstNode delete(String s){
-        if(s.equals(root.data) && root.)
-        BstNode to_be_deleted = this.search(s);
-
-        if(to_be_deleted != null){
+        BstNode to_be_deleted = null;
+        if(s.equals(root.data) && root.numb_children() == 0){
+            to_be_deleted = this.root;
+            this.root = null;
+        
+        }
+        else{
+            to_be_deleted = this.search(s);
             to_be_deleted.delete();
         }
 
         return to_be_deleted;
     }
-
+*/
 
 }
