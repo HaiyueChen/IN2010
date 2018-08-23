@@ -56,7 +56,7 @@ class Bst{
         return this.root.insert(s);
     }
 
-    /*
+    
     public BstNode delete(String s){
         BstNode to_be_deleted = null;
         if(s.equals(root.data) && root.numb_children() == 0){
@@ -71,6 +71,6 @@ class Bst{
 
         return to_be_deleted;
     }
-*/
+
 
 }

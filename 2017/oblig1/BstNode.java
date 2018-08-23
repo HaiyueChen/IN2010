@@ -63,53 +63,95 @@ class BstNode{
 
     }
 
-    public void delete(){
-        if(this.numb_children() < 1){
+    public BstNode left_itter(){
+        if(this.left == null){
+            return this;
+        }
+        else{
+            return this.left.left_itter();
+        }
+    }
 
-            if(this.parent.find_branch(this).equals("left")){
+    public BstNode right_itter(){
+        if(this.right == null){
+            return this;
+        }
+        else{
+            return this.right.right_itter();
+        }
+    }
+
+    public BstNode delete(){
+        int orientation = this.data.compareTo(this.parent.data);
+
+        if(this.numb_children() < 1){
+            
+            if(orientation < 0){
                 this.parent.left = null;
             }
-            else if(this.parent.find_branch(this).equals("right")){
+            else{
                 this.parent.right = null;
             }
-            else{
-                System.out.println("sum ting long 1");
-            }
+            return this;
         
         }
         else if(this.left != null ^ this.right != null){
             if(this.left != null){
                 
-                if (this.parent.find_branch(this).equals("left")) {
+                if (orientation < 0) {
                     this.parent.left = this.left;
+                }
+                else{
+                    this.parent.right = this.left;
+                }
+                
+                this.left.parent = null;
 
-                }
-                else if (this.parent.find_branch(this).equals("right")) {
-                    this.parent.right = null;
-                } else {
-                    System.out.println("sum ting long 1");
-                }
-            
             }
             else{
+                if(orientation < 0){
+                    this.parent.left = this.right;
 
+                }
+                else{
+                    this.parent.right = this.right;
 
+                }
+                
+                this.right.parent = null;
             }
-
-        }
-    }
-
-    public String find_branch(BstNode node){
-        if(this.left == node){
-            return "left";
-        }
-        else if(this.right == node){
-            return "right";
+            return this;
+       
         }
         else{
-            return "error";
+            if(orientation < 0){
+                BstNode replacement = this.right_itter();
+                String data_swap = replacement.data;
+                
+                replacement.data = this.data;
+                this.data = data_swap;
+                
+                replacement.parent.right = null;
+                replacement.parent = null;
+                return replacement;
+
+            }
+            else{
+                BstNode replacement = this.left_itter();
+                String data_swap = replacement.data;
+
+                replacement.data = this.data;
+                this.data = data_swap;
+
+                replacement.parent.left = null;
+                replacement.parent = null;
+                return replacement;
+
+            }
         }
+
     }
+
 
 
     public BstNode insert(String s){
