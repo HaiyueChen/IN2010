@@ -59,17 +59,47 @@ class Bst{
     
     public BstNode delete(String s){
         BstNode to_be_deleted = null;
-        if(s.equals(root.data) && root.numb_children() == 0){
-            to_be_deleted = this.root;
-            this.root = null;
-        
+        if(s.equals(root.data)){
+            if(root.numb_children() == 0){
+                to_be_deleted = this.root;
+                this.root = null;
+                return to_be_deleted;
+            }
+            else if(root.numb_children() == 1){
+                
+                to_be_deleted = root;
+
+                if(root.left != null){    
+                    root = root.left;
+                    root.parent = null;
+                }
+                else{
+                    root = root.right;
+                    root.parent = null;
+
+                }
+                return to_be_deleted;
+
+            }
+            else{
+                to_be_deleted = root.left.right_itter();
+                String data_swap = to_be_deleted.data;
+                to_be_deleted.data = root.data;
+                root.data = data_swap;
+                to_be_deleted.parent.right = null;
+                to_be_deleted.parent = null;
+                return to_be_deleted;
+
+
+            }
+
         }
         else{
             to_be_deleted = this.search(s);
-            to_be_deleted.delete();
+            return to_be_deleted.delete();
+
         }
 
-        return to_be_deleted;
     }
 
 
