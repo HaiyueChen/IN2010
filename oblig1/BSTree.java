@@ -3,22 +3,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class BSTree<T extends Comparable <T>> {
-    private Node root = null;
-    private int size = 0;
-    private ArrayList<T> sorted = new ArrayList<>();
-    private ArrayList<T> inRange = new ArrayList<>();
+public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
+    protected Node root = null;
+    protected int size = 0;
+    protected ArrayList<T> sorted = new ArrayList<>();
+    protected ArrayList<T> inRange = new ArrayList<>();
 
 
-
-    public void read(File f) throws FileNotFoundException{
-        Scanner s = new Scanner(f);
-        T value;
-        while(s.hasNextLine()){
-            value = (T) s.nextLine();
-            this.add(value);
-        }
-    }
 
     public int size(){
         return size;
@@ -37,8 +28,9 @@ public class BSTree<T extends Comparable <T>> {
 
     }
 
-    public boolean exitstInTree(T value){
-        return find(value) != null;
+    public boolean existsInTree(T value){
+        T value2 = value;
+        return find(value2) != null;
 
     }
 
@@ -88,7 +80,7 @@ public class BSTree<T extends Comparable <T>> {
             boolean found_smaller = false;
 
             while(!found_smaller && current.left != null){
-                if(value.compareTo(curernt.value) < 0 && current.left != null){
+                if(value.compareTo(current.value) < 0 && current.left != null){
                     current = current.left;
                 }
                 else{
@@ -119,9 +111,6 @@ public class BSTree<T extends Comparable <T>> {
                 return current.value;
             }
 
-
-
-
         }
         else{
             return null;
@@ -143,8 +132,8 @@ public class BSTree<T extends Comparable <T>> {
         return sorted;
     }
 
-    //work in progress
-    public ArrayList<T> findInRange(int low, int high){
+    
+    public ArrayList<T> findInRange(T low, T high){
         inRange = new ArrayList<>();
         if(root != null){
             root.findInRange(low, high);
@@ -152,26 +141,32 @@ public class BSTree<T extends Comparable <T>> {
         return inRange;
     }
 
-    private Node find(T value){
+    protected Node find(T value){
         return root.find(value);
     }
 
-    private Node findParent(Node n){
+    protected Node findParent(Node n){
         return n.parent;
     }
 
-    private Node findGrandparent(Node n){
-        return n.parent.parent;
+    protected Node findGrandparent(Node n){
+        if(n.parent != null){
+            return n.parent.parent;
+
+        }
+        else{
+            return null;
+        }
 
     }
 
 
-    private class Node {
+    protected class Node {
         public Node left, right, parent;
         public T value;
 
         public Node() {
-            value = 0;
+            value = null;
         }
 
         public Node(T v) {
@@ -205,9 +200,9 @@ public class BSTree<T extends Comparable <T>> {
             Node to_remove = this.find(v);
             if(to_remove != null){
                 Node parent = to_remove.parent;
-                int orintation = to_remove.value.compareTo(parent.value);
+                int orientation = to_remove.value.compareTo(parent.value);
                 if(to_remove.left == null && to_remove.right == null){
-                    if(orintation < 0){
+                    if(orientation < 0){
                         parent.left = null;
                     }
                     else{
