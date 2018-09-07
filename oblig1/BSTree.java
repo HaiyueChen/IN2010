@@ -76,41 +76,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
     
     public T findNearestSmallerThan(T value){
         if(root != null){
-            Node current = root;
-            boolean found_smaller = false;
-
-            while(!found_smaller && current.left != null){
-                if(value.compareTo(current.value) < 0 && current.left != null){
-                    current = current.left;
-                }
-                else{
-                    found_smaller = true;
-                }
-            }
-
-            int diff = value.compareTo(current.value);
-            if(diff < 0){
-                return null;
-            }
-            else if(diff == 0 && current.right == null){
-                return null;
-            }
-            else{
-                boolean found_smallest = false;
-                while (!found_smallest) {
-                    if (current.right != null) {
-                        if(value.compareTo(current.right.value) > diff && value.compareTo(current.right.value) < 0){
-                            current = current.right;
-                            diff = value.compareTo(current.value);
-                        }
-
-                    } else {
-                        found_smallest = true;
-                    }
-                }
-                return current.value;
-            }
-
+            return root.findSmaller(value, -1, root);
         }
         else{
             return null;
@@ -281,12 +247,41 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                 right.findInRange(low, high);
             }
 
+        }
+        //Slv definert metode for findNearestSmallerThan()
+        public T findSmaller(T q_value, int min_diff, Node smallest){
+            if(min_diff == -1){
+                min_diff = q_value.compareTo(this.value);
+            }
 
+            if(q_value.compareTo(this.value) < 0){
+                if(q_value.compareTo(this.value) > min_diff){
+                    min_diff = q_value.compareTo(this.value);
+                    smallest = this;
+                }
+            }
+            if(q_value.compareTo(this.value) < 0 ){
+                if(this.left != null){
+                    return this.left.findSmaller(q_value, min_diff, smallest);
+                }
+                else{
+                    return smallest.value;
+
+                }
+            }
+            else{
+                if(this.right != null){
+                    return this.right.findSmaller(q_value, min_diff, smallest);
+                }
+                else{
+                    return smallest.value;
+                }
+
+            }
 
         }
+
         
-
-
         public Node find(T v){
             if(v == value){
                 return this;
@@ -301,6 +296,51 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
             else{
                 return null;
             }   
+        }
+
+        public void right_rotate() {
+            if (this.left != null) {
+                Node newRoot = this.left;
+                if (this.parent != null) {
+                    if (this.value.compareTo(this.parent.value) < 0) {
+                        this.parent.left = newRoot;
+                    } else {
+                        this.parent.right = newRoot;
+                    }
+                }
+                newRoot.parent = this.parent;
+                this.parent = newRoot;
+                this.left = newRoot.right;
+                newRoot.right = this;
+                if (this.left != null) {
+                    this.left.parent = this;
+
+                }
+            }
+        }
+
+        public void left_rotate() {
+            if (this.right != null) {
+                Node newRoot = this.right;
+                if (this.parent != null) {
+                    if (this.value.compareTo(this.parent.value) < 0) {
+                        this.parent.left = newRoot;
+                    } else {
+                        this.parent.right = newRoot;
+
+                    }
+
+                }
+                newRoot.parent = this.parent;
+                this.parent = newRoot;
+                this.right = newRoot.left;
+                newRoot.left = this;
+                if (this.right != null) {
+                    this.right.parent = this;
+                }
+
+            }
+
         }
     }
 
