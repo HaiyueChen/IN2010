@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 
 public interface BSTOper<T>{
     public void add(T value);

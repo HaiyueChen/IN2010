@@ -1,14 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
     protected Node root = null;
     protected int size = 0;
     protected ArrayList<T> sorted = new ArrayList<>();
     protected ArrayList<T> inRange = new ArrayList<>();
-
 
 
     public int size(){
@@ -75,13 +73,26 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
 
     
     public T findNearestSmallerThan(T value){
+        Node ret = null;
         if(root != null){
-            return root.findSmaller(value, -1, root);
+            ret = root.findSmallerGen(value);
+            return ret.value;
         }
         else{
             return null;
         }
     }
+
+    /*
+    public int findNearestSmallerThanInt(int value){
+        if(root != null){
+            return root.findSmallerInt(value, -1, root);
+        }
+        else{
+            return null;
+        }
+    }
+    */
 
     public void addAll(ArrayList<T> values){
         for(T temp : values){
@@ -236,37 +247,81 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
 
         //self-defined helper function for findInRange()
         public void findInRange(T low, T high){
-            if(value.compareTo(low) >= 0 && value.compareTo(high) <=0){
+
+            if(value.compareTo(low) > 0 && value.compareTo(high) < 0){
+
                 inRange.add(value);
 
             }
-            if(left != null && left.value.compareTo(low) >= 0){
+            if(left != null){
                 left.findInRange(low, high);
             }
-            if(right != null && right.value.compareTo(high) <= 0){
+            if(right != null ){
                 right.findInRange(low, high);
             }
 
         }
-        //Slv definert metode for findNearestSmallerThan()
-        public T findSmaller(T q_value, int min_diff, Node smallest){
-            if(min_diff == -1){
-                min_diff = q_value.compareTo(this.value);
+        private Node getLargest(){
+            Node itt = this.right;
+            while(itt.right != null){
+                itt = itt.right;
+            }
+            return itt;
+        }
+        //Selv definert metode for findNearestSmallerThan() med generisk input
+        //Denne metoden samarbeidet jeg med to medstudenter og skjoenner ikke helt, jeg vil gjerne ha tilbakemelding om
+        //denne metoden.
+        public Node findSmallerGen(T v){
+            if(v.compareTo(this.value) > 0 && right != null){
+                return right.findSmallerGen(v);
+            }
+            else if(v.compareTo(this.value) < 0 && left != null){
+                return left.findSmallerGen(v);
+            }
+            else if(v.compareTo(this.value) == 0){
+                if(left != null){
+                    return left.getLargest();
+                }
+                else if(parent != null && parent.value.compareTo(value) > 0){
+                    Node itt = this;
+                    while(itt.parent != null && itt.value.compareTo(itt.parent.value) > 0){
+                        itt = itt.parent;
+                    }
+                    return itt.parent;
+
+                }
+                else{
+                    return parent;
+                }
+            }
+            else if(this.value.compareTo(v) < 0){
+                return this;
+            }
+            else{
+                return parent;
             }
 
-            if(q_value.compareTo(this.value) > 0){
-                if(q_value.compareTo(this.value) < min_diff){
-                    min_diff = q_value.compareTo(this.value);
+        }
+
+        //Selv definert metode for findNearestSmallerThan() med input av type integer eller double
+        /*
+        public int findSmallerInt(int q_value, int min_diff, Node smallest){
+            if(min_diff == -1){
+                min_diff = q_value - this.value;
+            }
+
+            if(q_value - this.value > 0){
+                if(q_value - this.value < min_diff){
+                    min_diff = q_value - this.value;
                     smallest = this;
                 }
             }
-            if(q_value.compareTo(this.value) < 0 ){
+            if(q_value - this.value < 0 ){
                 if(this.left != null){
                     return this.left.findSmaller(q_value, min_diff, smallest);
                 }
                 else{
                     return smallest.value;
-
                 }
             }
             else{
@@ -276,10 +331,11 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                 else{
                     return smallest.value;
                 }
-
             }
 
         }
+        */
+        
 
         
         public Node find(T v){
