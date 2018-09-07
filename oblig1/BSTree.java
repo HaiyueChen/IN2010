@@ -254,8 +254,8 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                 min_diff = q_value.compareTo(this.value);
             }
 
-            if(q_value.compareTo(this.value) < 0){
-                if(q_value.compareTo(this.value) > min_diff){
+            if(q_value.compareTo(this.value) > 0){
+                if(q_value.compareTo(this.value) < min_diff){
                     min_diff = q_value.compareTo(this.value);
                     smallest = this;
                 }
