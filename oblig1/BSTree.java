@@ -284,7 +284,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                 }
                 else if(parent != null && parent.value.compareTo(value) > 0){
                     Node itt = this;
-                    while(itt.parent != null && itt.value.compareTo(itt.parent.value) > 0){
+                    while(itt.parent != null && itt.value.compareTo(itt.parent.value) < 0){
                         itt = itt.parent;
                     }
                     return itt.parent;
