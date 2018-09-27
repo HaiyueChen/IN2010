@@ -223,7 +223,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                         }
                         parent = current.parent;
                         T data_to_swap = current.value;
-                        this.value = data_to_swap;
+                        to_remove.value = data_to_swap;
                         if(data_to_swap.compareTo(parent.value) < 0){
                             parent.left = null;
                         }
@@ -233,7 +233,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                     }
                     else{
                         T data_to_swap = current.value;
-                        this.value = data_to_swap;
+                        to_remove.value = data_to_swap;
                         to_remove.left = current.left;
                     }
                     
