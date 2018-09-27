@@ -50,12 +50,22 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                 }
                 else{
                     Node current = root.left;
-                    while(current.right != null){
-                        current = current.right;
+                    if(current.right != null){
+                        while(current.right != null){
+                            current = current.right;
+                        }
+                        T data_to_swap = current.value;
+                        root.value = data_to_swap;
+                        current.parent.right = null;
+
                     }
-                    T data_to_swap = current.value;
-                    root.value = data_to_swap;
-                    current.parent.right = null;
+                    else{
+                        T data_to_swap = current.value;
+                        root.value = data_to_swap;
+                        root.left = current.left;
+
+
+                    }
 
                 }
             size --;
@@ -207,18 +217,26 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                 }
                 else{
                     Node current = this.left;
-                    while(current.right != null){
-                        current = current.right;
-                    }
-                    parent = current.parent;
-                    T data_to_swap = current.value;
-                    this.value = data_to_swap;
-                    if(data_to_swap.compareTo(parent.value) < 0){
-                        parent.left = null;
+                    if(current.right != null){
+                        while(current.right != null){
+                            current = current.right;
+                        }
+                        parent = current.parent;
+                        T data_to_swap = current.value;
+                        this.value = data_to_swap;
+                        if(data_to_swap.compareTo(parent.value) < 0){
+                            parent.left = null;
+                        }
+                        else{
+                            parent.right = null;
+                        }
                     }
                     else{
-                        parent.right = null;
+                        T data_to_swap = current.value;
+                        this.value = data_to_swap;
+                        this.left = current.left;
                     }
+                    
 
                 }
             
@@ -263,10 +281,16 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
         }
         private Node getLargest(){
             Node itt = this.right;
-            while(itt.right != null){
-                itt = itt.right;
+            if(itt == null){
+                return this;
             }
-            return itt;
+            else{
+                while(itt.right != null){
+                    itt = itt.right;
+                }
+                return itt;
+
+            }
         }
         //Selv definert metode for findNearestSmallerThan() med generisk input
         //Denne metoden samarbeidet jeg med to medstudenter og skjoenner ikke helt, jeg vil gjerne ha tilbakemelding om
