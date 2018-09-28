@@ -16,7 +16,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
 
     public void add(T v){
         if(size == 0){
-            Node temp = new Node(v);    
+            Node temp = new Node(v);
             this.root = temp;
         }
         else{
@@ -27,8 +27,13 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
     }
 
     public boolean existsInTree(T value){
-        T value2 = value;
-        return find(value2) != null;
+        if(this.root == null){
+            return root;
+        }
+        else{
+            T value2 = value;
+            return find(value2) != null;
+        }
 
     }
 
@@ -78,10 +83,10 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
         else{
             return false;
         }
-        
+
     }
 
-    
+
     public T findNearestSmallerThan(T value){
         Node ret = null;
         if(root != null){
@@ -110,7 +115,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
         }
     }
 
-    
+
     public ArrayList<T> sortedArrayList(){
         sorted = new ArrayList<>();
         if(root != null){
@@ -119,7 +124,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
         return sorted;
     }
 
-    
+
     public ArrayList<T> findInRange(T low, T high){
         inRange = new ArrayList<>();
         if(root != null){
@@ -203,7 +208,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                     }
                     else{
                         parent.right = to_remove.left;
-                        
+
                     }
                 }
                 else if (to_remove.left == null && to_remove.right != null) {
@@ -236,10 +241,10 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
                         to_remove.value = data_to_swap;
                         to_remove.left = current.left;
                     }
-                    
+
 
                 }
-            
+
                 size --;
                 return true;
             }
@@ -359,9 +364,9 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
 
         }
         */
-        
 
-        
+
+
         public Node find(T v){
             if(v == value){
                 return this;
@@ -375,7 +380,7 @@ public class BSTree <T extends Comparable <T>> implements BSTOper<T> {
             }
             else{
                 return null;
-            }   
+            }
         }
 
         public void right_rotate() {
