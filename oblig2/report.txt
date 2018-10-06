@@ -1,0 +1,48 @@
+1.  What is the time complexity of your solution?  You must explain the stated com-
+    plexity.  If you have a different complexity for each problem,  you need to discuss
+    them separately.
+
+    - Realizability
+        O(V + E)
+        The algorithm checks at an arbitrary task. A DFS is performed untill the end is reached, or a cycle is found.
+        When all tasks that can be reached from a task is searched, and no cycle is found, this task is marked as 
+        "finished" and would not be a next starting task for DFS. The algorithm would continue to do DFS on unmarked tasks untill
+        all tasks in the plan is searched. This means the algorithm checkes for the number of tasks and all the edges.        
+    
+    - Optimal time schedule
+        O(V + E)
+        This algorithm requires that there are no cycles in the graph, which means that the Realizability must be checked prior
+        to running this algorithm.
+        The algorithm starts at an arbitrary task A in the plan. A DFS is performed from this task A to a task B that does not have
+        any dependencies, and is at "start" of the plan. The early_start and early_finish attribute for this task B is calculated.
+        The recursion returns to the task C at the higher level and continue to calculate attributes for the dependencies of this task C.
+        When the time attributes are calculated for all of the dependencies for this task, the time attribute for the current task C
+        will be calculate from the max(early_finish) of the dependencies. The recursion continues and terminates when it returns to task A, and calculates
+        for task A. The algorithm will start over again with another task that has not been calculated untill all tasks are calculated.
+        This algorithm visites all the tasks in the plan once and checks every edge once.
+
+    - Latest start, slack and critical tasks
+        O(V + E)
+        This algorithm uses the ending time of a project, therefore the Optimal time schedule algorithm must ran prior to running
+        this algorithm.
+        The algorithm starts at an arbitrary task in the plan. A DFS is performed from this task A to a task B that has no tasks that come
+        after, or "decent" from task B. This means task B is at the "end" of the plan and slack, late_start, late_finish and critical task
+        can be calculated using the project finish time. The recursion returns to the higher level much like in the Optimal time schedule algorithm. 
+        When all slack-attribute are calculate for the decendents, the earliest "late_start" of the decendents would be compared to this tasks early_finish,
+        and the slack-attributes will be calculated with that value. When this recursion terminates, the algorithm would find a task that have not been visited
+        and start the recursion again, until all tasks are calculate.
+        The algorithm visites all the tasks in the plan once and checks every edge once.
+
+        
+
+2.  What  requirements  are  there  for  the  input  graph  in  order  for  the  project  to  be
+    successfully planned?  Please put the discussion in the light of graf theoretical prop-
+    erties.
+
+    I think the input graph must be directed and asyclical.
+
+
+
+3.  What kind of the graph algorithms did you use in your implementation?
+
+    I used DFS.
