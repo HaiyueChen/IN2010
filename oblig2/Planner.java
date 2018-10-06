@@ -87,6 +87,7 @@ class Planner {
             if(t.visit_status == 0){
                 check = t.realizable(new LinkedList<Task>());
                 if(check != null){
+
                     return check;
                 }
             }
@@ -97,11 +98,21 @@ class Planner {
     public void realizable(){
         LinkedList<Task> cycle = this.detect_cycle();
         if (cycle != null) {
+            
+            while(cycle.getFirst() != cycle.getLast()){
+                cycle.removeFirst();
+            }
+            
             System.out.println("Plan not realizable, cycle found:");
             for (Task t : cycle) {
-                System.out.print("(" + t.id + ", " + t.name + ")" + " ==> ");
+                if(t == cycle.getLast()){
+                    System.out.print("(" + t.id + ", " + t.name + ")");    
+                }
+                else{
+                    System.out.print("(" + t.id + ", " + t.name + ")" + " ==> ");
+
+                }
             }
-            System.out.print("(" + cycle.getFirst().id + ", " + cycle.getFirst().name + ")");
             System.exit(0);
         }
     }
@@ -132,6 +143,7 @@ class Planner {
 
     public void print_info(){
         System.out.println("-----------------------------------------");
+        System.out.println("**** Task overview ****");
         for(Task t : tasks.values()){
             System.out.println("\nTask id: " + t.id + " |  Task name: " + t.name);
             System.out.println("Time requirement: " + t.time);
@@ -169,6 +181,8 @@ class Planner {
         int curernt_staff = 0;
         Boolean check_print = false;
 
+    
+        System.out.println("\n**** Simulation start ****\n");
         for(int time = 0; time < this.min_finish_time + 1; time++){
             LinkedList<Task> done = new LinkedList<>();
             LinkedList<Task> started = new LinkedList<>();
@@ -212,8 +226,62 @@ class Planner {
             }
         }
 
-        System.out.println("**** Shortest possible time for project is " + this.min_finish_time + " ****");
+        System.out.println("**** Shortest possible time for project is " + this.min_finish_time + " ****\n");
     }
+
+    public void simulate_heap(){
+        TaskHeap heap = new TaskHeap();
+        
+        for (Task t : tasks.values()) {
+            heap.add(t);
+        }
+
+        TaskNode current = heap.pop_first();
+        int current_time = current.value.late_start;
+        int staff = current.value.staff;
+        System.out.println("-----------------------------------------");
+        System.out.println("**** Task overview ****");
+
+        System.out.println("\nTime: " + current_time);
+        System.out.println("Starting: " + current.value.id);
+        heap.add_finish(current);
+        int count = 0;
+        while (!heap.is_empty()) {
+            current = heap.pop_first();
+            if (current.value.late_start == current_time && !current.started) {
+                // System.out.println("Starting: " + current.value.id + " key: " + current.key);
+                System.out.println("Starting: " + current.value.id);
+                staff += current.value.staff;
+                heap.add_finish(current);
+            } else if (current.value.late_finish == current_time && current.started) {
+                // System.out.println("Finished: " + current.value.id + " key: " + current.key);
+                System.out.println("Finished: " + current.value.id);
+                staff -= current.value.staff;
+            } else {
+                System.out.println("Current staff: " + staff);
+                if (current_time < current.value.late_start && !current.started) {
+                    current_time = current.value.late_start;
+                    staff += current.value.staff;
+                    System.out.println("\nTime: " + current_time);
+                    // System.out.println("Starting: " + current.value.id + " key: " + current.key);
+                    System.out.println("Starting: " + current.value.id);
+                    heap.add_finish(current);
+                } else if (current_time < current.value.late_finish && current.started) {
+                    current_time = current.value.late_finish;
+                    staff -= current.value.staff;
+                    System.out.println("\nTime: " + current_time);
+                    // System.out.println("Finished: " + current.value.id + " key: " + current.key);
+                    System.out.println("Finished: " + current.value.id);
+
+                }
+
+            }
+        }
+        System.out.println("Current staff: " + staff);
+        System.out.println("**** Shortest possible time for project is " + current_time + " ****\n");
+    }
+
+
 
     public void wipe_all_tasks(){
         this.min_finish_time = -1;
@@ -223,7 +291,7 @@ class Planner {
             t.late_start = -1;
             t.late_finish = -1;
             t.slack = -1;
-            t.critical = -1;
+            t.critical = null;
             t.visit_status = -1;
         }
     }

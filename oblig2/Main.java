@@ -23,12 +23,17 @@ class Main{
         }
 
         
-
+        //check if project realizable, if not print cycle and terminate
         p.realizable();
-        p.set_late();
-        //p.print_info();
+
+        //print simulation of program after executing set_early and set_late
         p.simulate();
 
+        //print info about tasks after simulation is done
+        p.print_info();
+
+        //print simulation with heap implementation
+        //p.simulate_heap();
 
 
 

@@ -43,6 +43,7 @@ class Task {
         // System.out.println("\n");
 
         if(this.visit_status == 1){
+            current_path.add(this);
             return current_path;
         }
         else{

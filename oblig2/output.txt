@@ -1,0 +1,1033 @@
+|||||||||||||||||||||||||||||||||||||||||||
+buildhouse1.txt
+
+**** Simulation start ****
+
+
+Time: 0
+Starting: 5
+Current staff: 2
+
+
+Time: 4
+Finished: 5
+Starting: 1
+Current staff: 2
+
+
+Time: 8
+Finished: 1
+Starting: 2
+Current staff: 4
+
+
+Time: 12
+Starting: 6
+Current staff: 6
+
+
+Time: 14
+Finished: 2
+Finished: 6
+Starting: 7
+Current staff: 2
+
+
+Time: 17
+Starting: 3
+Current staff: 4
+
+
+Time: 18
+Finished: 7
+Finished: 3
+Starting: 8
+Current staff: 4
+
+
+Time: 21
+Starting: 4
+Current staff: 7
+
+
+Time: 22
+Finished: 8
+Finished: 4
+Current staff: 0
+
+**** Shortest possible time for project is 22 ****
+
+-----------------------------------------
+**** Task overview ****
+
+Task id: 1 |  Task name: Build-walls
+Time requirement: 4
+Manpower requirement: 2
+Early start: 4    |    Early finish: 8
+Late start: 4     |    Late finish: 8
+Slack: 0
+Task dependency:
+   2 3
+
+
+Task id: 2 |  Task name: Build-roofs
+Time requirement: 6
+Manpower requirement: 4
+Early start: 8    |    Early finish: 14
+Late start: 8     |    Late finish: 14
+Slack: 0
+Task dependency:
+   3 4 7
+
+
+Task id: 3 |  Task name: Put-on-wallpapers
+Time requirement: 1
+Manpower requirement: 2
+Early start: 14    |    Early finish: 15
+Late start: 17     |    Late finish: 18
+Slack: 3
+Task dependency:
+   8
+
+
+Task id: 4 |  Task name: Put-on-tiles
+Time requirement: 1
+Manpower requirement: 3
+Early start: 14    |    Early finish: 15
+Late start: 21     |    Late finish: 22
+Slack: 7
+Task dependency:
+   None
+
+Task id: 5 |  Task name: Build-foundation
+Time requirement: 4
+Manpower requirement: 2
+Early start: 0    |    Early finish: 4
+Late start: 0     |    Late finish: 4
+Slack: 0
+Task dependency:
+   1 6
+
+
+Task id: 6 |  Task name: Make-floor
+Time requirement: 2
+Manpower requirement: 2
+Early start: 4    |    Early finish: 6
+Late start: 12     |    Late finish: 14
+Slack: 8
+Task dependency:
+   7
+
+
+Task id: 7 |  Task name: Put-carpet-floor
+Time requirement: 4
+Manpower requirement: 2
+Early start: 14    |    Early finish: 18
+Late start: 14     |    Late finish: 18
+Slack: 0
+Task dependency:
+   8
+
+
+Task id: 8 |  Task name: Move-in
+Time requirement: 4
+Manpower requirement: 4
+Early start: 18    |    Early finish: 22
+Late start: 18     |    Late finish: 22
+Slack: 0
+Task dependency:
+   None
+
+
+Minimum project finish time is: 22
+
+-----------------------------------------
+
+|||||||||||||||||||||||||||||||||||||||||
+buildhouse2.txt
+
+Plan not realizable, cycle found:
+(1, Build-walls) ==> (6, Make-floor) ==> (7, Put-carpet-floor) ==> (2, Build-roofs) ==> (1, Build-walls)
+
+
+||||||||||||||||||||||||||||||||||||||||||
+examplefigur.txt
+
+**** Simulation start ****
+
+
+Time: 0
+Starting: 2
+Current staff: 2
+
+
+Time: 2
+Starting: 1
+Current staff: 6
+
+
+Time: 5
+Finished: 2
+Finished: 1
+Starting: 3
+Starting: 4
+Current staff: 6
+
+
+Time: 6
+Finished: 3
+Current staff: 4
+
+
+Time: 7
+Finished: 4
+Starting: 6
+Current staff: 4
+
+
+Time: 11
+Starting: 5
+Current staff: 7
+
+
+Time: 15
+Finished: 6
+Finished: 5
+Starting: 7
+Current staff: 2
+
+
+Time: 17
+Starting: 8
+Current staff: 5
+
+
+Time: 18
+Finished: 7
+Finished: 8
+Current staff: 0
+
+**** Shortest possible time for project is 18 ****
+
+-----------------------------------------
+**** Task overview ****
+
+Task id: 1 |  Task name: 1
+Time requirement: 3
+Manpower requirement: 4
+Early start: 0    |    Early finish: 3
+Late start: 2     |    Late finish: 5
+Slack: 2
+Task dependency:
+   3
+
+
+Task id: 2 |  Task name: 2
+Time requirement: 5
+Manpower requirement: 2
+Early start: 0    |    Early finish: 5
+Late start: 0     |    Late finish: 5
+Slack: 0
+Task dependency:
+   3 4
+
+
+Task id: 3 |  Task name: 3
+Time requirement: 1
+Manpower requirement: 2
+Early start: 5    |    Early finish: 6
+Late start: 5     |    Late finish: 6
+Slack: 0
+Task dependency:
+   5 6
+
+
+Task id: 4 |  Task name: 4
+Time requirement: 2
+Manpower requirement: 4
+Early start: 5    |    Early finish: 7
+Late start: 5     |    Late finish: 7
+Slack: 0
+Task dependency:
+   6
+
+
+Task id: 5 |  Task name: 5
+Time requirement: 4
+Manpower requirement: 3
+Early start: 6    |    Early finish: 10
+Late start: 11     |    Late finish: 15
+Slack: 5
+Task dependency:
+   7
+
+
+Task id: 6 |  Task name: 6
+Time requirement: 8
+Manpower requirement: 4
+Early start: 7    |    Early finish: 15
+Late start: 7     |    Late finish: 15
+Slack: 0
+Task dependency:
+   7 8
+
+
+Task id: 7 |  Task name: 7
+Time requirement: 3
+Manpower requirement: 2
+Early start: 15    |    Early finish: 18
+Late start: 15     |    Late finish: 18
+Slack: 0
+Task dependency:
+   None
+
+Task id: 8 |  Task name: 8
+Time requirement: 1
+Manpower requirement: 3
+Early start: 15    |    Early finish: 16
+Late start: 17     |    Late finish: 18
+Slack: 2
+Task dependency:
+   None
+
+
+Minimum project finish time is: 18
+-----------------------------------------
+||||||||||||||||||||||||||||||||||||||||
+buildgarage.txt
+
+**** Simulation start ****
+
+
+Time: 0
+Starting: 1
+Current staff: 1
+
+
+Time: 14280
+Finished: 1
+Starting: 3
+Current staff: 3
+
+
+Time: 230178
+Starting: 2
+Current staff: 4
+
+
+Time: 230182
+Finished: 3
+Finished: 2
+Starting: 4
+Current staff: 2
+
+
+Time: 262316
+Finished: 4
+Starting: 5
+Current staff: 4
+
+
+Time: 303548
+Finished: 5
+Starting: 9
+Starting: 11
+Current staff: 6
+
+
+Time: 307873
+Finished: 11
+Starting: 12
+Current staff: 8
+
+
+Time: 309675
+Finished: 9
+Starting: 10
+Current staff: 7
+
+
+Time: 363982
+Starting: 7
+Current staff: 8
+
+
+Time: 363997
+Finished: 10
+Finished: 7
+Current staff: 4
+
+
+Time: 429351
+Finished: 12
+Starting: 13
+Current staff: 3
+
+
+Time: 430593
+Finished: 13
+Starting: 14
+Current staff: 2
+
+
+Time: 443668
+Starting: 8
+Current staff: 4
+
+
+Time: 484771
+Starting: 6
+Current staff: 5
+
+
+Time: 484913
+Finished: 14
+Finished: 8
+Finished: 6
+Current staff: 0
+
+**** Shortest possible time for project is 484913 ****
+
+-----------------------------------------
+**** Task overview ****
+
+Task id: 1 |  Task name: get-paperwork
+Time requirement: 14280
+Manpower requirement: 1
+Early start: 0    |    Early finish: 14280
+Late start: 0     |    Late finish: 14280
+Slack: 0
+Task dependency:
+   2 3
+
+
+Task id: 2 |  Task name: call-contractor
+Time requirement: 4
+Manpower requirement: 1
+Early start: 14280    |    Early finish: 14284
+Late start: 230178     |    Late finish: 230182
+Slack: 215898
+Task dependency:
+   4
+
+
+Task id: 3 |  Task name: clean-yard
+Time requirement: 215902
+Manpower requirement: 3
+Early start: 14280    |    Early finish: 230182
+Late start: 14280     |    Late finish: 230182
+Slack: 0
+Task dependency:
+   4
+
+
+Task id: 4 |  Task name: build-foundation
+Time requirement: 32134
+Manpower requirement: 2
+Early start: 230182    |    Early finish: 262316
+Late start: 230182     |    Late finish: 262316
+Slack: 0
+Task dependency:
+   5 6 7
+
+
+Task id: 5 |  Task name: build-wall-support
+Time requirement: 41232
+Manpower requirement: 4
+Early start: 262316    |    Early finish: 303548
+Late start: 262316     |    Late finish: 303548
+Slack: 0
+Task dependency:
+   8 9 11
+
+
+Task id: 6 |  Task name: lay-electrical-cables
+Time requirement: 142
+Manpower requirement: 1
+Early start: 262316    |    Early finish: 262458
+Late start: 484771     |    Late finish: 484913
+Slack: 222455
+Task dependency:
+   None
+
+Task id: 7 |  Task name: call-electrician
+Time requirement: 15
+Manpower requirement: 1
+Early start: 262316    |    Early finish: 262331
+Late start: 363982     |    Late finish: 363997
+Slack: 101666
+Task dependency:
+   8
+
+
+Task id: 8 |  Task name: install-electrical-gate-opener
+Time requirement: 41245
+Manpower requirement: 2
+Early start: 363997    |    Early finish: 405242
+Late start: 443668     |    Late finish: 484913
+Slack: 79671
+Task dependency:
+   None
+
+Task id: 9 |  Task name: build-walls
+Time requirement: 6127
+Manpower requirement: 4
+Early start: 303548    |    Early finish: 309675
+Late start: 303548     |    Late finish: 309675
+Slack: 0
+Task dependency:
+   10 13
+
+
+Task id: 10 |  Task name: add-gate
+Time requirement: 54322
+Manpower requirement: 3
+Early start: 309675    |    Early finish: 363997
+Late start: 309675     |    Late finish: 363997
+Slack: 0
+Task dependency:
+   8
+
+
+Task id: 11 |  Task name: build-stairs
+Time requirement: 4325
+Manpower requirement: 2
+Early start: 303548    |    Early finish: 307873
+Late start: 303548     |    Late finish: 307873
+Slack: 0
+Task dependency:
+   12
+
+
+Task id: 12 |  Task name: add-2nd-floor
+Time requirement: 121478
+Manpower requirement: 4
+Early start: 307873    |    Early finish: 429351
+Late start: 307873     |    Late finish: 429351
+Slack: 0
+Task dependency:
+   13
+
+
+Task id: 13 |  Task name: isolate-room
+Time requirement: 1242
+Manpower requirement: 3
+Early start: 429351    |    Early finish: 430593
+Late start: 429351     |    Late finish: 430593
+Slack: 0
+Task dependency:
+   14
+
+
+Task id: 14 |  Task name: furnish-appartment
+Time requirement: 54320
+Manpower requirement: 2
+Early start: 430593    |    Early finish: 484913
+Late start: 430593     |    Late finish: 484913
+Slack: 0
+Task dependency:
+   None
+
+
+Minimum project finish time is: 484913
+
+-----------------------------------------
+
+|||||||||||||||||||||||||||||||||||||||||||
+buildrail.txt
+
+**** Simulation start ****
+
+
+Time: 0
+Starting: 9
+Current staff: 10
+
+
+Time: 3
+Finished: 9
+Starting: 10
+Starting: 11
+Starting: 12
+Starting: 14
+Starting: 17
+Current staff: 44
+
+
+Time: 4
+Finished: 11
+Starting: 18
+Starting: 20
+Current staff: 48
+
+
+Time: 5
+Finished: 10
+Current staff: 44
+
+
+Time: 9
+Starting: 16
+Current staff: 56
+
+
+Time: 16
+Finished: 20
+Starting: 23
+Current staff: 57
+
+
+Time: 23
+Starting: 19
+Current staff: 61
+
+
+Time: 28
+Finished: 14
+Current staff: 49
+
+
+Time: 31
+Starting: 15
+Current staff: 61
+
+
+Time: 33
+Finished: 12
+Starting: 13
+Current staff: 61
+
+
+Time: 44
+Finished: 18
+Finished: 16
+Starting: 21
+Current staff: 50
+
+
+Time: 46
+Finished: 23
+Current staff: 45
+
+
+Time: 48
+Finished: 17
+Finished: 19
+Starting: 22
+Current staff: 34
+
+
+Time: 51
+Finished: 15
+Finished: 13
+Starting: 8
+Current staff: 17
+
+
+Time: 59
+Finished: 21
+Starting: 24
+Current staff: 19
+
+
+Time: 63
+Finished: 8
+Current staff: 12
+
+
+Time: 64
+Finished: 22
+Starting: 25
+Current staff: 14
+
+
+Time: 119
+Finished: 24
+Current staff: 7
+
+
+Time: 124
+Finished: 25
+Starting: 27
+Current staff: 10
+
+
+Time: 149
+Finished: 27
+Starting: 29
+Current staff: 10
+
+
+Time: 156
+Starting: 28
+Current staff: 20
+
+
+Time: 186
+Finished: 29
+Finished: 28
+Starting: 26
+Starting: 30
+Current staff: 14
+
+
+Time: 191
+Starting: 6
+Current staff: 20
+
+
+Time: 198
+Starting: 1
+Current staff: 30
+
+
+Time: 200
+Starting: 7
+Current staff: 36
+
+
+Time: 203
+Starting: 4
+Current staff: 42
+
+
+Time: 206
+Finished: 26
+Finished: 30
+Starting: 5
+Starting: 31
+Current staff: 41
+
+
+Time: 211
+Starting: 2
+Current staff: 51
+
+
+Time: 217
+Starting: 3
+Current staff: 61
+
+
+Time: 218
+Finished: 6
+Finished: 1
+Finished: 7
+Finished: 4
+Finished: 5
+Finished: 31
+Finished: 2
+Finished: 3
+Current staff: 0
+
+**** Shortest possible time for project is 218 ****
+
+-----------------------------------------
+**** Task overview ****
+
+Task id: 1 |  Task name: Install-pavement
+Time requirement: 20
+Manpower requirement: 10
+Early start: 186    |    Early finish: 206
+Late start: 198     |    Late finish: 218
+Slack: 12
+Task dependency:
+   None
+
+Task id: 2 |  Task name: Install-railing
+Time requirement: 7
+Manpower requirement: 10
+Early start: 5    |    Early finish: 12
+Late start: 211     |    Late finish: 218
+Slack: 206
+Task dependency:
+   None
+
+Task id: 3 |  Task name: Install-ticketmachine
+Time requirement: 1
+Manpower requirement: 10
+Early start: 63    |    Early finish: 64
+Late start: 217     |    Late finish: 218
+Slack: 154
+Task dependency:
+   None
+
+Task id: 4 |  Task name: Paint-tower-1-with-arch
+Time requirement: 15
+Manpower requirement: 6
+Early start: 119    |    Early finish: 134
+Late start: 203     |    Late finish: 218
+Slack: 84
+Task dependency:
+   None
+
+Task id: 5 |  Task name: Paint-tower-2
+Time requirement: 12
+Manpower requirement: 6
+Early start: 124    |    Early finish: 136
+Late start: 206     |    Late finish: 218
+Slack: 82
+Task dependency:
+   None
+
+Task id: 6 |  Task name: Paint-trusses
+Time requirement: 27
+Manpower requirement: 6
+Early start: 186    |    Early finish: 213
+Late start: 191     |    Late finish: 218
+Slack: 5
+Task dependency:
+   None
+
+Task id: 7 |  Task name: Paint-cables-and-rods
+Time requirement: 18
+Manpower requirement: 6
+Early start: 186    |    Early finish: 204
+Late start: 200     |    Late finish: 218
+Slack: 14
+Task dependency:
+   None
+
+Task id: 8 |  Task name: Put-lane-tunnel-and-intersection
+Time requirement: 12
+Manpower requirement: 7
+Early start: 51    |    Early finish: 63
+Late start: 51     |    Late finish: 63
+Slack: 0
+Task dependency:
+   3 31
+
+
+Task id: 9 |  Task name: Setup-barrack
+Time requirement: 3
+Manpower requirement: 10
+Early start: 0    |    Early finish: 3
+Late start: 0     |    Late finish: 3
+Slack: 0
+Task dependency:
+   10 11 12 14 16 17
+
+
+Task id: 10 |  Task name: Prepare-storage
+Time requirement: 2
+Manpower requirement: 4
+Early start: 3    |    Early finish: 5
+Late start: 3     |    Late finish: 5
+Slack: 0
+Task dependency:
+   2
+
+
+Task id: 11 |  Task name: Rig-ramspace-reinforcing
+Time requirement: 1
+Manpower requirement: 4
+Early start: 3    |    Early finish: 4
+Late start: 3     |    Late finish: 4
+Slack: 0
+Task dependency:
+   18 19 20
+
+
+Task id: 12 |  Task name: Build-tunnel
+Time requirement: 30
+Manpower requirement: 12
+Early start: 3    |    Early finish: 33
+Late start: 3     |    Late finish: 33
+Slack: 0
+Task dependency:
+   13
+
+
+Task id: 13 |  Task name: Clean-tunnel
+Time requirement: 18
+Manpower requirement: 12
+Early start: 33    |    Early finish: 51
+Late start: 33     |    Late finish: 51
+Slack: 0
+Task dependency:
+   8
+
+
+Task id: 14 |  Task name: Build-intersection
+Time requirement: 25
+Manpower requirement: 12
+Early start: 3    |    Early finish: 28
+Late start: 3     |    Late finish: 28
+Slack: 0
+Task dependency:
+   15
+
+
+Task id: 15 |  Task name: Clean-intersection
+Time requirement: 20
+Manpower requirement: 12
+Early start: 28    |    Early finish: 48
+Late start: 31     |    Late finish: 51
+Slack: 3
+Task dependency:
+   8
+
+
+Task id: 16 |  Task name: Build-towerfoundation-1
+Time requirement: 35
+Manpower requirement: 12
+Early start: 3    |    Early finish: 38
+Late start: 9     |    Late finish: 44
+Slack: 6
+Task dependency:
+   21
+
+
+Task id: 17 |  Task name: Build-towerfoundation-2
+Time requirement: 45
+Manpower requirement: 12
+Early start: 3    |    Early finish: 48
+Late start: 3     |    Late finish: 48
+Slack: 0
+Task dependency:
+   22
+
+
+Task id: 18 |  Task name: Make-armouring-tower-1
+Time requirement: 40
+Manpower requirement: 4
+Early start: 4    |    Early finish: 44
+Late start: 4     |    Late finish: 44
+Slack: 0
+Task dependency:
+   21
+
+
+Task id: 19 |  Task name: Make-armouring-tower-2
+Time requirement: 25
+Manpower requirement: 4
+Early start: 4    |    Early finish: 29
+Late start: 23     |    Late finish: 48
+Slack: 19
+Task dependency:
+   22
+
+
+Task id: 20 |  Task name: Make-armouring-arch
+Time requirement: 12
+Manpower requirement: 4
+Early start: 4    |    Early finish: 16
+Late start: 4     |    Late finish: 16
+Slack: 0
+Task dependency:
+   23
+
+
+Task id: 21 |  Task name: Encase-and-armour-tower-1
+Time requirement: 15
+Manpower requirement: 5
+Early start: 44    |    Early finish: 59
+Late start: 44     |    Late finish: 59
+Slack: 0
+Task dependency:
+   24
+
+
+Task id: 22 |  Task name: Encase-and-armour-tower-2
+Time requirement: 16
+Manpower requirement: 5
+Early start: 48    |    Early finish: 64
+Late start: 48     |    Late finish: 64
+Slack: 0
+Task dependency:
+   25
+
+
+Task id: 23 |  Task name: Encase-and-armour-arch
+Time requirement: 30
+Manpower requirement: 5
+Early start: 16    |    Early finish: 46
+Late start: 16     |    Late finish: 46
+Slack: 0
+Task dependency:
+   26
+
+
+Task id: 24 |  Task name: Cast-tower-1
+Time requirement: 60
+Manpower requirement: 7
+Early start: 59    |    Early finish: 119
+Late start: 59     |    Late finish: 119
+Slack: 0
+Task dependency:
+   4 27
+
+
+Task id: 25 |  Task name: Cast-tower-2
+Time requirement: 60
+Manpower requirement: 7
+Early start: 64    |    Early finish: 124
+Late start: 64     |    Late finish: 124
+Slack: 0
+Task dependency:
+   5 27
+
+
+Task id: 26 |  Task name: Cast-arch
+Time requirement: 20
+Manpower requirement: 7
+Early start: 46    |    Early finish: 66
+Late start: 186     |    Late finish: 206
+Slack: 140
+Task dependency:
+   31
+
+
+Task id: 27 |  Task name: Stretch-two-maincables
+Time requirement: 25
+Manpower requirement: 10
+Early start: 124    |    Early finish: 149
+Late start: 124     |    Late finish: 149
+Slack: 0
+Task dependency:
+   28 29
+
+
+Task id: 28 |  Task name: Build-truss-1-with-rods
+Time requirement: 30
+Manpower requirement: 10
+Early start: 149    |    Early finish: 179
+Late start: 156     |    Late finish: 186
+Slack: 7
+Task dependency:
+   1 6 7 30
+
+
+Task id: 29 |  Task name: Build-truss-2-with-rods
+Time requirement: 37
+Manpower requirement: 10
+Early start: 149    |    Early finish: 186
+Late start: 149     |    Late finish: 186
+Slack: 0
+Task dependency:
+   1 6 7 30
+
+
+Task id: 30 |  Task name: Cast-lane-on-truss
+Time requirement: 20
+Manpower requirement: 7
+Early start: 186    |    Early finish: 206
+Late start: 186     |    Late finish: 206
+Slack: 0
+Task dependency:
+   31
+
+
+Task id: 31 |  Task name: Polish-lane-on-arch
+Time requirement: 12
+Manpower requirement: 7
+Early start: 206    |    Early finish: 218
+Late start: 206     |    Late finish: 218
+Slack: 0
+Task dependency:
+   None
+
+
+Minimum project finish time is: 218
+
+-----------------------------------------
