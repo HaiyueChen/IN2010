@@ -1,0 +1,7 @@
+class Quick_Sort{
+
+
+
+
+    
+}
