@@ -33,7 +33,16 @@
         and start the recursion again, until all tasks are calculate.
         The algorithm visites all the tasks in the plan once and checks every edge once.
 
-        
+    - Simulation with heap implementation
+        O(vlog(v))
+        This algorithm creates a heap with the task and initialy use the late_start as the key. While the heap if not empty, the task with the lowest key is poped and there are two cases.
+        If the current time equals the key of the poped task, or the current time does not equal the key. In the first case, if the current time equals the late_start, info is printed and
+        the same task is inserted into the heap again with the key being the late_finish of the task. If the current time equals the late_finish of the task, info is printed and this task
+        is removed permanently from the heap. In the second case, the current time is changed and info is printed, and the procedure is the same as in the first case.
+
+    - Simulation with bad implementation
+        I am not sure about the complexity of this solution, but is somewhere along the line with O(n^2 * m), where n is the number of tasks, and m is the time of earliest project finish time.
+        This solution loops on the amount of earliest project finish and checks all the criterias every time.
 
 2.  What  requirements  are  there  for  the  input  graph  in  order  for  the  project  to  be
     successfully planned?  Please put the discussion in the light of graf theoretical prop-
