@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 class Main{
 
@@ -20,14 +21,39 @@ class Main{
         ////////////////////////////////////////////////////////////////////////
 
         //Insertion sort
+        /*
         int[] original_insertion = desc;
         int[] sorted_insertion = Insertion_Sort.sort(original_insertion);
         System.out.println("\nIs Sorted: " + check(sorted_insertion));
         System.out.println("\nSorted array: " + Arrays.toString(sorted_insertion));
         System.out.println("Original array: " + Arrays.toString(original_insertion) + "\n");
-    
+        */
         ////////////////////////////////////////////////////////////////////////
-    
+        
+        //Quick sort
+
+        Random rand = new Random(100);
+        int failed = 0;
+        for(int i = 0; i < 9999; i++){
+            int[] full_random = new int[9999];
+            for(int j = 0; j < 9999; j++){
+                full_random[j] = rand.nextInt();
+            }
+            int[] sorted = Quick_Sort.sort(full_random);
+            if(!check(sorted)){
+                failed ++;
+            }
+        }
+        System.out.println(failed);
+
+        /*
+        int[] original_quick = full_random;
+        int[] sorted_quick = Quick_Sort.sort(original_quick);
+        System.out.println("\nIs Sorted: " + check(sorted_quick));
+        System.out.println("\nSorted array: " + Arrays.toString(sorted_quick));
+        System.out.println("Original array: " + Arrays.toString(original_quick) + "\n");
+        */
+        ////////////////////////////////////////////////////////////////////////
     
     }
 
