@@ -5,7 +5,7 @@ class Main{
 
     public static void main(String[] args) {
         int[] asc = new int[] {1, 2, 3 ,4};
-        int[] desc = new int[] {4, 3, 2, 3, 2, 5, 2, 2, 1};
+        int[] desc = new int[] {4, 3, 2, 1};
         int[] random = new int[] {3, 4, 1, 2};
 
 
@@ -31,7 +31,7 @@ class Main{
         ////////////////////////////////////////////////////////////////////////
         
         //Quick sort
-
+        /*
         Random rand = new Random(100);
         int failed = 0;
         for(int i = 0; i < 9999; i++){
@@ -46,7 +46,6 @@ class Main{
         }
         System.out.println(failed);
 
-        /*
         int[] original_quick = full_random;
         int[] sorted_quick = Quick_Sort.sort(original_quick);
         System.out.println("\nIs Sorted: " + check(sorted_quick));
@@ -55,6 +54,16 @@ class Main{
         */
         ////////////////////////////////////////////////////////////////////////
     
+        // Insertion sort
+        
+        int[] original_bucket = random; 
+        int[] sorted_bucket = Bucket_Sort.sort(original_bucket, 1, 4);
+        System.out.println("\nIs Sorted: " + check(sorted_bucket)); 
+        System.out.println("\nSorted array: " + Arrays.toString(sorted_bucket));
+        System.out.println("Original array: " + Arrays.toString(original_bucket) + "\n");
+        
+        ////////////////////////////////////////////////////////////////////////
+
     }
 
 
