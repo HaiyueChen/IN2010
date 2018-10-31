@@ -4,20 +4,23 @@ import java.util.Random;
 class Main{
 
     public static void main(String[] args) {
-        int[] asc = new int[] {1, 2, 3 ,4};
-        int[] desc = new int[] {4, 3, 2, 1};
-        int[] random = new int[] {3, 4, 1, 2};
-
-
+        int[] asc = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] desc = new int[] {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
+        
+        Random rand = new Random(100);
+        int[] random = new int[10];
+        for(int i = 0; i < random.length; i++){
+            random[i] = rand.nextInt(9);
+        }
         //Selection sort
-        /*
+        
         int[] original_selection = desc;
 
         int[] sorted_selection = Selection_Sort.Sort(original_selection);
         System.out.println("\nIs Sorted: " + check(sorted_selection));
         System.out.println("\nSorted array: " + Arrays.toString(sorted_selection));
         System.out.println("Original array: " + Arrays.toString(original_selection) + "\n");
-        */
+        
         ////////////////////////////////////////////////////////////////////////
 
         //Insertion sort
@@ -54,14 +57,14 @@ class Main{
         */
         ////////////////////////////////////////////////////////////////////////
     
-        // Insertion sort
-        
+        //Bucket sort
+        /*
         int[] original_bucket = random; 
         int[] sorted_bucket = Bucket_Sort.sort(original_bucket, 1, 4);
         System.out.println("\nIs Sorted: " + check(sorted_bucket)); 
         System.out.println("\nSorted array: " + Arrays.toString(sorted_bucket));
         System.out.println("Original array: " + Arrays.toString(original_bucket) + "\n");
-        
+        */
         ////////////////////////////////////////////////////////////////////////
 
     }
