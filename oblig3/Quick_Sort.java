@@ -9,6 +9,7 @@ class Quick_Sort{
     }
 
     public static void quicksort(int[] numbers, int left, int right){
+        //System.out.println(Arrays.toString(numbers));
         if(left >= right){
             return;
         }

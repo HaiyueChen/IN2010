@@ -2,10 +2,10 @@ import java.util.Arrays;
 
 class Selection_Sort{
 
-    public static int[] Sort(int[] numbers){
+    public static int[] sort(int[] numbers){
         int[] sorted = numbers.clone();
         for(int i = 0; i < sorted.length; i++){
-            System.out.println(Arrays.toString(sorted));
+            //System.out.println(Arrays.toString(sorted));
             int smallest_index = smallest_index(sorted, i);
             int smallest_num = sorted[smallest_index];
             if(sorted[i] > sorted[smallest_index]){

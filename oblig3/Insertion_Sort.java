@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Insertion_Sort{
 
     public static int[] sort(int[] numbers){
@@ -6,7 +8,7 @@ class Insertion_Sort{
         if(sorted.length == 0 || sorted.length == 1){return sorted;}
 
         for(int i = 1; i < sorted.length; i++){
-
+            //System.out.println(Arrays.toString(sorted));
             int j = i;
             int current = sorted[j];
             while(j > 0 && current < sorted[j-1]){

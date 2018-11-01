@@ -1,60 +1,140 @@
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Random;
 
 class Main{
 
     public static void main(String[] args) {
-        int[] asc = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] desc = new int[] {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-        
-        Random rand = new Random(100);
-        int[] random = new int[10];
-        for(int i = 0; i < random.length; i++){
-            random[i] = rand.nextInt(9);
-        }
-        //Selection sort
-        
-        int[] original_selection = desc;
 
+        LinkedList<int[]> asc = new LinkedList<>();
+        LinkedList<int[]> desc = new LinkedList<>();
+        LinkedList<int[]> rand = new LinkedList<>();
+
+        int size = 1000;
+        for(int i = 0; i < 5; i++){
+            asc.add(gen_asc(size));
+            size *= 5;
+        }
+
+
+        size = 1000;
+        for(int i = 0; i < 5; i++){
+            desc.add(gen_desc(size));
+            size *= 5;
+        }
+
+        size = 1000;
+        int lower = -10000;
+        int higher = 10000;
+        for(int i = 0; i < 5; i++){
+            rand.add(gen_rand(size, lower, higher));
+            size *= 5;
+        }
+
+        //Selection sort
+        /*
+        int[] original_selection = random;
         int[] sorted_selection = Selection_Sort.Sort(original_selection);
         System.out.println("\nIs Sorted: " + check(sorted_selection));
         System.out.println("\nSorted array: " + Arrays.toString(sorted_selection));
         System.out.println("Original array: " + Arrays.toString(original_selection) + "\n");
+        */
+
+        System.out.println("--------------\nSelection sort:");
+        System.out.println("\nAscending:");
+        for(int[] arr : asc){
+            long t = System.nanoTime();
+            Selection_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
+
+        System.out.println("\nDecending:");
+        for (int[] arr : desc) {
+            long t = System.nanoTime();
+            Selection_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
         
+        System.out.println("\nRandom:");
+        for (int[] arr : rand) {
+            long t = System.nanoTime();
+            Selection_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
         ////////////////////////////////////////////////////////////////////////
 
         //Insertion sort
         /*
-        int[] original_insertion = desc;
+        int[] original_insertion = random;
         int[] sorted_insertion = Insertion_Sort.sort(original_insertion);
         System.out.println("\nIs Sorted: " + check(sorted_insertion));
         System.out.println("\nSorted array: " + Arrays.toString(sorted_insertion));
         System.out.println("Original array: " + Arrays.toString(original_insertion) + "\n");
         */
+
+        System.out.println("--------------\nInsertion sort:");
+        System.out.println("\nAscending:");
+        for (int[] arr : asc) {
+            long t = System.nanoTime();
+            Insertion_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
+
+        System.out.println("\nDecending:");
+        for (int[] arr : desc) {
+            long t = System.nanoTime();
+            Insertion_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
+
+        System.out.println("\nRandom:");
+        for (int[] arr : rand) {
+            long t = System.nanoTime();
+            Insertion_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
         ////////////////////////////////////////////////////////////////////////
         
         //Quick sort
         /*
-        Random rand = new Random(100);
-        int failed = 0;
-        for(int i = 0; i < 9999; i++){
-            int[] full_random = new int[9999];
-            for(int j = 0; j < 9999; j++){
-                full_random[j] = rand.nextInt();
-            }
-            int[] sorted = Quick_Sort.sort(full_random);
-            if(!check(sorted)){
-                failed ++;
-            }
-        }
-        System.out.println(failed);
-
-        int[] original_quick = full_random;
+        int[] original_quick = fuck;
         int[] sorted_quick = Quick_Sort.sort(original_quick);
         System.out.println("\nIs Sorted: " + check(sorted_quick));
-        System.out.println("\nSorted array: " + Arrays.toString(sorted_quick));
-        System.out.println("Original array: " + Arrays.toString(original_quick) + "\n");
         */
+        //System.out.println("\nSorted array: " + Arrays.toString(sorted_quick));
+        //System.out.println("Original array: " + Arrays.toString(original_quick) + "\n");
+        System.out.println("--------------\nQuick sort:");
+        System.out.println("\nAscending:");
+        for (int[] arr : asc) {
+            long t = System.nanoTime();
+            Quick_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
+
+        System.out.println("\nDecending:");
+        for (int[] arr : desc) {
+            long t = System.nanoTime();
+            Quick_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
+
+        System.out.println("\nRandom:");
+        for (int[] arr : rand) {
+            long t = System.nanoTime();
+            Quick_Sort.sort(arr);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
+
+
         ////////////////////////////////////////////////////////////////////////
     
         //Bucket sort
@@ -65,10 +145,59 @@ class Main{
         System.out.println("\nSorted array: " + Arrays.toString(sorted_bucket));
         System.out.println("Original array: " + Arrays.toString(original_bucket) + "\n");
         */
+        System.out.println("--------------\nBucket sort:");
+        System.out.println("\nAscending:");
+        for (int[] arr : asc) {
+            long t = System.nanoTime();
+            Bucket_Sort.sort(arr, lower, higher);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
+
+        System.out.println("\nDecending:");
+        for (int[] arr : desc) {
+            long t = System.nanoTime();
+            Bucket_Sort.sort(arr, lower, higher);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
+
+        System.out.println("\nRandom:");
+        for (int[] arr : rand) {
+            long t = System.nanoTime();
+            Bucket_Sort.sort(arr, lower, higher);
+            double run_time = (System.nanoTime() - t) / 1000000;
+            System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
+        }
         ////////////////////////////////////////////////////////////////////////
 
     }
 
+
+    public static int[] gen_asc(int size){
+        int[] arr = new int[size];
+        for(int i = 0; i < size; i++){
+            arr[i] = i;
+        }
+        return arr;
+    }
+
+    public static int[] gen_desc(int size) {
+        int[] arr = new int[size];
+        for (int i = size - 1; i > - 1; i--) {
+            arr[i] = i;
+        }
+        return arr;
+    }
+
+    public static int[] gen_rand(int size, int lower, int higher){
+        Random rand = new Random(100);
+        int[] arr = new int[size];
+        for(int i = 0; i < size; i++){
+            arr[i] = lower + rand.nextInt(higher);
+        }
+        return arr;
+    }
 
     public static boolean check(int[] to_check){
         if(to_check.length == 0){
