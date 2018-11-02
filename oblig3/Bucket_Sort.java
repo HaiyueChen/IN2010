@@ -7,31 +7,22 @@ class Bucket_Sort{
     public static int[] sort(int[] numbers, int low, int high){
         int[] sorted = new int[numbers.length];
         //System.out.println(Arrays.toString(numbers));
-        HashMap<Integer, Integer> buckets = new HashMap<Integer, Integer>();
-        for(int i = low; i < high + 1; i++){
-            buckets.put(i, 0);
+        int off_set = -low;
+        int[] buckets = new int[high - low + 1];
+        for(int i = 0; i < (high - low); i++){
+            buckets[i] = 0; 
         }
-
-
 
         for(int i = 0; i < numbers.length; i++){
             int current = numbers[i];
-            if(buckets.get(current) == null){
-                System.out.println(current);
-                System.out.println(buckets.get(current));
-                break;
-            }
-            //buckets.put(current, buckets.get(current) + 1);
+            buckets[current + off_set] += 1;
         }
 
         int sorted_index = 0;
-        for(int key : buckets.keySet()){
-            if(buckets.get(key) > 0){
-                for(int i = 0; i < buckets.get(key); i++){
-                    sorted[sorted_index] = key;
-                    sorted_index ++;
-                }
-
+        for(int i = 0; i < buckets.length; i++){
+            for(int j =0; j < buckets[i]; j++){
+                sorted[sorted_index] = i - off_set;
+                sorted_index ++;
             }
         }
 
