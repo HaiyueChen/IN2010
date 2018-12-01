@@ -11,20 +11,20 @@ class Main{
         LinkedList<int[]> rand = new LinkedList<>();
 
 
-        int size = 10000;
+        int size = 1000;
         for(int i = 0; i < 5; i++){
             asc.add(gen_asc(size));
             size *= 5;
         }
 
 
-        size = 10000;
+        size = 1000;
         for(int i = 0; i < 5; i++){
             desc.add(gen_desc(size));
             size *= 5;
         }
 
-        size = 10000;
+        size = 1000;
         int lower = -100000000;
         int higher = 100000000;
         for(int i = 0; i < 5; i++){
@@ -41,9 +41,9 @@ class Main{
         System.out.println("Original array: " + Arrays.toString(original_selection) + "\n");
         */
 
-        
-        //System.out.println("--------------\nSelection sort:");
         /*
+        System.out.println("--------------\nSelection sort:");
+        
         System.out.println("\nAscending:");
         for(int[] arr : asc){
             long t = System.nanoTime();
@@ -66,7 +66,7 @@ class Main{
             double run_time = (System.nanoTime() - t) / 1000000;
             System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
         }
-        */
+        
         
         ////////////////////////////////////////////////////////////////////////
 
@@ -79,9 +79,9 @@ class Main{
         System.out.println("Original array: " + Arrays.toString(original_insertion) + "\n");
         */
 
-        
-        //System.out.println("--------------\nInsertion sort:");
         /*
+        System.out.println("--------------\nInsertion sort:");
+        
         System.out.println("\nAscending:");
         for (int[] arr : asc) {
             long t = System.nanoTime();
@@ -105,6 +105,7 @@ class Main{
             System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
         }
         */
+        
         
         ////////////////////////////////////////////////////////////////////////
         
@@ -143,7 +144,7 @@ class Main{
             System.out.println("Nr. elements: " + arr.length + " Runtime: " + run_time);
         }
         
-        */
+        
 
         ////////////////////////////////////////////////////////////////////////
     
